@@ -27,10 +27,17 @@ public class Kafe04 {
         System.out.println("Silahkan pilih menu yang anda inginkan");
     }
 
-    public static int hitungTotalHarga(int pilihanMenu, int banyakItem) {
+    public static int hitungTotalHarga(int pilihanMenu, int banyakItem, String kodePromo) {
         int[] hargaItems = { 15000, 20000, 22000, 12000, 10000, 18000 };
 
         int hargaTotal = hargaItems[pilihanMenu - 1] * banyakItem;
+        if (kodePromo.equals("DISKON50")) {
+            hargaTotal -= hargaTotal * 50 / 100;
+        } else if (kodePromo.equals("DISKON30")) {
+            hargaTotal -= hargaTotal * 30 / 100;
+        } else {
+
+        }
         return hargaTotal;
     }
 
@@ -38,15 +45,24 @@ public class Kafe04 {
         Menu("Andi", true, "DISKON50");
         // Menu("Budi", true, "DISKON30");
         Scanner sc = new Scanner(System.in);
+        int totalKeseluruhan = 0;
+        String pesanLagi = "Ya";
 
-        System.out.print("\nMasukkan Nomor Menu Yang Ingin Anda Pesan: ");
-        int pilihanMenu = sc.nextInt();
-        System.out.print("Masukkan Jumlah Item Yang Ingin Dipesan: ");
-        int banyakItem = sc.nextInt();
+        while (pesanLagi.equalsIgnoreCase("Ya")) {
+            System.out.print("\nMasukkan Nomor Menu Yang Ingin Anda Pesan: ");
+            int pilihanMenu = sc.nextInt();
+            System.out.print("Masukkan Jumlah Item Yang Ingin Dipesan: ");
+            int banyakItem = sc.nextInt();
 
-        int totalHarga = hitungTotalHarga(pilihanMenu, banyakItem);
+            int totalHarga = hitungTotalHarga(pilihanMenu, banyakItem, "DISKON50");
+            totalKeseluruhan += totalHarga;
 
-        System.out.println("Total Harga Untuk Pesanan Anda: Rp" + totalHarga);
+            System.out.print("Apakah Anda Akan Memesan Lagi? (Ya / Tidak): ");
+            pesanLagi = sc.next();
+            // System.out.println("Total Harga Untuk Pesanan Anda: Rp" + totalHarga);
+        }
+
+        System.out.println("\nTotal Keseluruhan Pesanan: Rp " + totalKeseluruhan);
 
         sc.close();
     }
