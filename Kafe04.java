@@ -1,17 +1,10 @@
 public class Kafe04 {
-    // public static void Menu() {
-    //     System.out.println("====== MENU RESTO KAFE ======");
-    //     System.out.println("1. Kopi Hitam - Rp 15,000");
-    //     System.out.println("2. Cappuccino - Rp 20,000");
-    //     System.out.println("3. Latte - Rp 22,000");
-    //     System.out.println("4. Teh Tarik - Rp 12,000");
-    //     System.out.println("5. Roti Bakar - Rp 10,000");
-    //     System.out.println("6. Mie Goreng - Rp 18,000");
-    //     System.out.println("=============================");
-    // }
+    public static void Menu(String namaPelanggan, boolean isMember) {
+        System.out.println("Selamat Datang, " + namaPelanggan + "!");
 
-    public static void main(String[] args) {
-        // Menu();
+        if (isMember) {
+            System.out.println("Anda Adalah Member, Dapatkan Diskon 10% Untuk Setiap Pembelian!");
+        }
 
         System.out.println("====== MENU RESTO KAFE ======");
         System.out.println("1. Kopi Hitam - Rp 15,000");
@@ -21,6 +14,9 @@ public class Kafe04 {
         System.out.println("5. Roti Bakar - Rp 10,000");
         System.out.println("6. Mie Goreng - Rp 18,000");
         System.out.println("=============================");
-    
+    }
+
+    public static void main(String[] args) {
+        Menu("Andi", true);
     }
 }
